@@ -56,21 +56,30 @@ const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
-const { device } = require('./apiFrontend');
-const { deviceApi } = require('./apiFrontend');
+const MeerkatAutomationApis = require('meerkat_automation_apis');
 const routes = require('./routes');
 const FeedbackService = require('./services/FeedbackService');
 const SpeakersService = require('./services/SpeakerService');
 
 const feedbackService = new FeedbackService('./data/feedback.json');
 const speakersService = new SpeakersService('./data/speakers.json');
-//const device = new Device();
-//const deviceApi = new DeviceApi();
+const deviceApi = new MeerkatAutomationApis.DeviceApi();
+const device = new MeerkatAutomationApis.Device();
+const province = new MeerkatAutomationApis.Province();
+const communityStr = new MeerkatAutomationApis.CommunityStr();
+const sNMPCollector = new MeerkatAutomationApis.SNMPCollector();
+const vendor = new MeerkatAutomationApis.Vendor();
+const deviceType = new MeerkatAutomationApis.DeviceType();
+const kPIStats = new MeerkatAutomationApis.KPIStats();
+const monObj = new MeerkatAutomationApis.MonObj();
+const sNMPMIB = new MeerkatAutomationApis.SNMPMIB();
+const metric = new MeerkatAutomationApis.Metric();
+
 const app = express();
 
 const port = 3000;
 
-app.locals.siteName = 'ROUX Meetup';
+app.locals.siteName = 'Meerkat Inventory';
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
@@ -110,9 +119,18 @@ app.use(
   routes({
     feedbackService,
     speakersService,
-    //apiObjects,
     deviceApi,
     device,
+    province,
+    communityStr,
+    sNMPCollector,
+    vendor,
+    deviceType,
+    kPIStats,
+    monObj,
+    sNMPMIB,
+    metric,
+    deviceType,
   })
 );
 

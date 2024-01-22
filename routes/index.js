@@ -1,12 +1,12 @@
 const express = require('express');
-const speakersRoute = require('./speakers');
-const feedbackRoute = require('./feedback');
 const deviceRoute = require('./device');
+const SNMPCollectorRoute = require('./snmpcollector');
+const CollectorVMRoute = require('./collectorvm');
 
 const router = express.Router();
 
 module.exports = (params) => {
-  const { speakersService } = params;
+  //const { speakersService } = params;
   router.get('/', async (request, response, next) => {
     /*
     if (!request.session.visitcount) {
@@ -20,17 +20,17 @@ module.exports = (params) => {
     //response.sendFile(path.join(__dirname, './static/index.html'));
     //response.render('pages/index', { pageTitle: 'Welcome' });
     try {
-      const topSpeakers = await speakersService.getList();
-      const artwork = await speakersService.getAllArtwork();
-      response.render('layout', { pageTitle: 'Welcome', template: 'index', topSpeakers, artwork });
+      //const topSpeakers = await speakersService.getList();
+      //const artwork = await speakersService.getAllArtwork();
+      response.render('layout', { pageTitle: 'Welcome', template: 'index' });
     } catch (err) {
       return next(err);
     }
   });
 
-  router.use('/speakers', speakersRoute(params));
-  router.use('/feedback', feedbackRoute(params));
   router.use('/device', deviceRoute(params));
+  router.use('/SNMPCollector', SNMPCollectorRoute(params));
+  router.use('/CollectorVM', CollectorVMRoute(params));
 
   return router;
 };

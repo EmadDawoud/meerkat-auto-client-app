@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4">
       <div class="maincontent">
-        <h1>Send us feedback</h1>
+        <h1>Add SNMP Collector</h1>
         <%if(locals.errors){%>
          <div class="alert alert-danger">
           <ul>
@@ -21,7 +21,7 @@
             </div>        
              <% } %>
 
-        <form class="feedback-form" method="POST" action="/feedback">
+        <form class="feedback-form" method="POST" action="/device">
           <div class="form-group">
             <label for="feedback-form-name">Name</label>
             <input
@@ -33,33 +33,33 @@
             />
           </div>
           <div class="form-group">
-            <label for="feedback-form-email">E-Mail</label>
+            <label for="feedback-form-ip">IP</label>
             <input
               type="text"
               class="form-control"
-              id="feedback-form-email"
-              name="email"
-              placeholder="Enter your email address"
+              id="feedback-form-ip"
+              name="ip"
+              placeholder="Enter IP address"
             />
           </div>
           <div class="form-group">
-            <label for="feedback-form-title">Title</label>
+            <label for="feedback-form-province">Province</label>
             <input
               type="text"
               class="form-control"
-              id="feedback-form-title"
-              name="title"
-              placeholder="Title of your feedback"
+              id="feedback-form-province"
+              name="province"
+              placeholder="Enter Province"
             />
           </div>
           <div class="form-group">
-            <label for="feedback-form-message">Message</label>
+            <label for="feedback-form-communitystr">Community String</label>
             <textarea
               type="text"
               placeholder="Enter your message, then hit the submit button"
               class="form-control"
-              id="feedback-form-message"
-              name="message"
+              id="feedback-form-communitystr"
+              name="communitystr"
               rows="6"
             ></textarea>
           </div>
@@ -69,19 +69,19 @@
     </div>
     <aside class="col-md-8">
       <div class="maincontent feedback">
-        <h1>Recent Feedback</h1>
+        <h1>SNMP Collector Inventory</h1>
         <div class="feedback-items">
-          <%feedback.forEach(function(item){%>
+          <%deviceList.forEach(function(item){%>
 
               <div class="feedback-item item-list media-list">
     
             <div class="feedback-item media">
               <div class="feedback-info media-body">          
                 <div class="feedback-head">
-                  <div class="feedback-title"><%=item.title%></div>
-                  <small><%=item.name%></small>
+                  <div class="feedback-title"><%=item.name%></div>
+                  <small><%=item.id%></small>
                 </div>
-              <div class="feedback-message"><%=item.message%></div>
+              <div class="feedback-message"><%=item.ip%></div>
             </div>
             </div>
           </div>

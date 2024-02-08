@@ -17,7 +17,7 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
-    "meerkat_automation_apis": "github:EmadDawoud/meerkat_autmation_APIs_fresh#v1.2.0",
+    "meerkat_automation_apis": "github:EmadDawoud/meerkat_autmation_APIs_fresh#V2.0.0",
     "oas3-tools": "^2.2.3",
     "session": "^0.1.0"
   },

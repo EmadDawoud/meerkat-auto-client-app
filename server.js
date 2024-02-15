@@ -12,7 +12,7 @@ const communityStr = new MeerkatAutomationApis.CommunityStr();
 const sNMPCollector = new MeerkatAutomationApis.SNMPCollector();
 const vendor = new MeerkatAutomationApis.Vendor();
 const deviceType = new MeerkatAutomationApis.DeviceType();
-const kPIStats = new MeerkatAutomationApis.KPIStats();
+//const kPIStats = new MeerkatAutomationApis.KPIStats();
 const monObj = new MeerkatAutomationApis.MonObj();
 const sNMPMIB = new MeerkatAutomationApis.SNMPMIB();
 const metric = new MeerkatAutomationApis.Metric();
@@ -68,7 +68,7 @@ app.use(
     sNMPCollector,
     vendor,
     deviceType,
-    kPIStats,
+    //kPIStats,
     monObj,
     sNMPMIB,
     metric,

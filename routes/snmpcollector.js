@@ -5,31 +5,32 @@ const { check, validationResult } = require('express-validator');
 const router = express.Router();
 
 module.exports = (params) => {
+  //const { feedbackService } = params;
   const { device } = params;
   const { deviceApi } = params;
-  const { province } = params;
-  const { communityStr } = params;
-  const { sNMPCollector } = params;
-  const { vendor } = params;
-  const { kPIStats } = params;
-  const { monObj } = params;
-  const { sNMPMIB } = params;
-  const { metric } = params;
-  const { deviceType } = params;
+  //const { province } = params;
+  //const { communityStr } = params;
+  //const { sNMPCollector } = params;
+  //const { vendor } = params;
+  //const { kPIStats } = params;
+  //const { monObj } = params;
+  //const { sNMPMIB } = params;
+  //const { metric } = params;
+  //const { deviceType } = params;
   //initialize the device object and its associated objects
 
-  device.province = province;
-  device.vendor = vendor;
-  device.sNMPCollector = sNMPCollector;
-  device.deviceType = deviceType;
-  device.kPIStats = kPIStats;
-  device.communityStr = communityStr;
-  device.sNMPCollector.kPIStats = device.kPIStats;
-  device.sNMPCollector.communityStr = device.communityStr;
-  device.monObj = [monObj];
-  device.monObj[0].sNMPMIB = sNMPMIB;
-  device.monObj[0].metric = [metric];
-  device.monObj[0].metric[0].sNMPMIB = device.monObj[0].sNMPMIB;
+  //device.province = province;
+  //device.vendor = 'Juniper';
+  //device.sNMPCollector = sNMPCollector;
+  //device.deviceType = deviceType;
+  //device.kPIStats = kPIStats;
+  //device.communityStr = communityStr;
+  //device.sNMPCollector.kPIStats = device.kPIStats;
+  //device.sNMPCollector.communityStr = device.communityStr;
+  //device.monObj = [monObj];
+  //device.monObj[0].sNMPMIB = sNMPMIB;
+  //device.monObj[0].metric = [metric];
+  //device.monObj[0].metric[0].sNMPMIB = device.monObj[0].sNMPMIB;
 
   var deviceList = [device];
 
@@ -61,8 +62,8 @@ module.exports = (params) => {
       const successMsg = request.session.feedback ? request.session.feedback.message : false;
       request.session.feedback = {};
       return response.render('layout', {
-        pageTitle: 'SNMPCollector',
-        template: 'snmpcollector',
+        pageTitle: 'Device',
+        template: 'device',
         deviceList,
         errors,
         successMsg,
@@ -84,6 +85,7 @@ module.exports = (params) => {
         .isLength({ min: 2 })
         .escape()
         .withMessage('A valid Province is required'),
+      check('vendor').trim().escape(),
       check('communitystr')
         .trim()
         .isLength({ min: 3 })
@@ -109,8 +111,10 @@ module.exports = (params) => {
         //console.log(request.body);
         opts.body.name = request.body.name;
         opts.body.ip = request.body.ip;
-
-        opts.body.province.name = request.body.province;
+        opts.body.vendor = request.body.vendor;
+        //opts.body.vendor = 'Juniper';
+        opts.body.province = request.body.province;
+        opts.body.devicetype = request.body.devicetype;
         opts.body.communitystr = request.body.communitystr;
 
         var addCallback = function (error, data, response) {
@@ -120,12 +124,12 @@ module.exports = (params) => {
             console.log('POST API called successfully.');
           }
         };
-        console.log(request.body.ip);
-        //console.log(opts);
+        console.log(request.body.devicetype);
+        console.log(device);
         deviceApi.addDevice(opts, addCallback);
 
         request.session.feedback = {
-          message: 'Thank you for your feedback',
+          message: 'Thank you for Adding the device',
         };
         return response.redirect('/device');
         //return response.send(request.body);

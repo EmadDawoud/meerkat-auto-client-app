@@ -29,7 +29,7 @@
               class="form-control"
               id="feedback-form-name"
               name="name"
-              placeholder="Enter your name"
+              placeholder="Enter Device name"
             />
           </div>
           <div class="form-group">
@@ -44,24 +44,67 @@
           </div>
           <div class="form-group">
             <label for="feedback-form-province">Province</label>
-            <input
-              type="text"
+            <select
               class="form-control"
               id="feedback-form-province"
               name="province"
-              placeholder="Enter Province"
-            />
+            >
+              <option value="BC">British columbia</option>
+              <option value="AB">Alberta</option>
+              <option value="ON">Ontario</option>
+              <option value="MB">Manitoba</option>
+              <option value="NB">New Brunshwick</option>
+              <option value="NS">Nova Scotia</option>
+              <option value="PE">Prince Edward Island</option>
+              <option value="QC">Quebec</option>
+              <option value="SK">Saskatchewan</option>
+             </select>
           </div>
+
+
           <div class="form-group">
-            <label for="feedback-form-communitystr">Community String</label>
-            <textarea
-              type="text"
-              placeholder="Enter your message, then hit the submit button"
+            <label for="feedback-form-vendor">Vendor</label>
+            <select
               class="form-control"
-              id="feedback-form-communitystr"
+              id="feedback-form-vendor"
+              name="vendor"
+            >
+              <option value="Juniper">Juniper</option>
+              <option value="Nokia">Nokia</option>
+              <option value="Cisco">Cisco</option>
+             </select>
+          </div>
+
+          <div class="form-group">
+            <label for="feedback-form-devicetype">Device Type</label>
+            <select
+              class="form-control"
+              id="feedback-form-deviceType"
+              name="devicetype"
+            >
+              <option value="RE">RE</option>
+              <option value="BR">BR</option>
+              <option value="SE">SE</option>
+              <option value="CA">CA</option>
+              <option value="SA">SA</option>
+              <option value="CI">CI</option>
+             </select>
+             
+          </div>
+
+
+          <div class="form-group">
+            <label for="feedback-form-province">Community String</label>
+            <select
+              class="form-control"
+              id="feedback-form-communityString"
               name="communitystr"
-              rows="6"
-            ></textarea>
+            >
+              <option value="public">public</option>
+              <option value="m1bview">m1bview</option>
+              <option value="telusm1b">telusm1b</option>
+             </select>
+             
           </div>
           <button type="submit" class="btn btn-secondary float-right">Submit</button>
         </form>

@@ -149,9 +149,15 @@ jobs:
         ports:
           - 8080:8080
 
+      api-client-app:
+        image: ghcr.io/emaddawoud/meerkat-auto-client-app@${{ needs.build.outputs.image-digest }}
+
+        ports:
+          - 3000:3000
+
       
     steps:
       - uses: actions/checkout@v4
       - run: sleep 3
-      - run: curl http://localhost:8080
+      - run: curl http://localhost:3000
         

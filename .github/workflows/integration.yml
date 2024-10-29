@@ -18,7 +18,25 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
 
-    
+    services:
+      mysql-db-host:
+        image: mysql:latest
+        env:
+          MYSQL_ROOT_PASSWORD: mypassword
+          MYSQL_DATABASE: Meerkat_Collection
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+      meerkat-api-host:
+        image: ghcr.io/emaddawoud/meerkat-auto-api-server:latest
+
+        ports:
+          - 8080:8080
     steps:
     - uses: actions/checkout@v4
    # - name: Use Node.js ${{ matrix.node-version }}

@@ -15,6 +15,9 @@ on:
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "master" ]
+  
+  repository_dispatch:
+    types: [trigger-integration]
 
 env:
   # Use docker.io for Docker Hub if empty

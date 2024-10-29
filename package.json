@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon --ignore feedback.json server.js",
-    "test": "node try_original.js"
+    "test": "node try_orginal.js"
   },
   "keywords": [],
   "author": "",

@@ -146,7 +146,7 @@ jobs:
           --health-timeout=5s
           --health-retries=3
 
-      api-server:
+      meerkat-api-host:
         image: ghcr.io/emaddawoud/meerkat-auto-api-server:latest
 
         ports:

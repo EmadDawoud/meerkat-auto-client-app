@@ -17,7 +17,7 @@ on:
     branches: [ "master" ]
   
   repository_dispatch:
-    types: [trigger-integration]
+    types: [trigger-build]
 
 env:
   # Use docker.io for Docker Hub if empty
